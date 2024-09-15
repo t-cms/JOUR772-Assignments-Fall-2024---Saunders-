@@ -53,44 +53,64 @@ umd_courses |>
 
 ```
 
-**A1**
+**A1:** Engineering, Cooperative Education
 
 ------------------------------------------------------------------------
 
 ### **Q2** Find out the greatest number of times any individual class has been offered in our dataset. You must show the greatest number of classes first.
 
 ```{r}
+umd_courses |>
+  group_by(title) |>
+  summarise(
+    count_classes = n()
+  ) |>
+  arrange(desc(count_classes))
 
 ```
 
-**A2**
+**A2: 1303**
 
 ------------------------------------------------------------------------
 
 ### **Q3** Count the number of courses for each instructor and department. Which instructor has taught the most?
 
 ```{r}
+umd_courses |>
+  group_by(instructors, department) |>
+  summarise(
+    count_classes = n()
+  ) |>
+  arrange(desc(count_classes))
+  arrange(desc(instructors))
 
 ```
 
-**A3**
+**A3: Keith Yearwood- 61**
 
 ------------------------------------------------------------------------
 
 ### **Q4** Given the results for Q3, what would have made it easier to find the answer? You don't have to know *how* to accomplish this; I want you to describe in words what would make the answer easier to see.
 
 ```{r}
+  
 
 ```
 
-**A4**
+**A4:** If the classses that didn't have professors were omitted. Such as creating a pivot table to only show the classes where classes had professor names.
 
 ------------------------------------------------------------------------
 
 ### **Q5** Take one of the questions you listed in the final question of the pre_lab and try to answer it here in code. If you don't know how to fully answer it, write what code you can and describe in words what else you would need to do. If you got an answer, is it interesting?
 
+1.  How many classes have N/A listed for a professor?
+
 ```{r}
+umd_courses |>
+  na_counts_base <- lapply(umd_courses, function(x) sum(is.na(x)))
+  print(na_counts_base)
+
 
 ```
 
-**A5**
+A: So, I attempted to create an object called instructors, then tried to sum up the number of NA's in the instructors column. I am not sure what I am doing wrong. I found this line of code online and attempted to change it for the purpose of my dataset.

@@ -53,5 +53,3 @@ dataframe %>%
   group_by(some_column) %>% 
   summarize(count = n())
 ```
-
-
