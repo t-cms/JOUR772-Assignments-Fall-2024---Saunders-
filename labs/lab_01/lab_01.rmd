@@ -103,14 +103,21 @@ umd_courses |>
 
 ### **Q5** Take one of the questions you listed in the final question of the pre_lab and try to answer it here in code. If you don't know how to fully answer it, write what code you can and describe in words what else you would need to do. If you got an answer, is it interesting?
 
-1.  How many classes have N/A listed for a professor?
+1.  Which N/A course has the most instructors?
 
 ```{r}
 umd_courses |>
-  na_counts_base <- lapply(umd_courses, function(x) sum(is.na(x)))
-  print(na_counts_base)
+  group_by(instructors, title) |>
+  summarise(
+    count_instructors = n()
+  ) |>
+  arrange(desc(count_instructors))
+
+
 
 
 ```
 
-A: So, I attempted to create an object called instructors, then tried to sum up the number of NA's in the instructors column. I am not sure what I am doing wrong. I found this line of code online and attempted to change it for the purpose of my dataset.
+A: Doctoral Dissertation Research, 1176
+
+So, I attempted to find the NA course with the most instructors. First, I grouped my table with instructors and title for courses. Then I created the column count_instructors. Lastly, I arranged that column in descending order, so I could know which N/A course had the most instructors.
