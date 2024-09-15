@@ -48,6 +48,7 @@ The library function loads an R library such as the tidyverse, providing access 
 **Task** Put the following code -- which stores the numeral 2 as a variable called number -- in the console and hit enter.
 
 ```{r}
+
 number <- 2
 ```
 
@@ -243,4 +244,4 @@ No code here; I want you to provide three questions that this data suggests to y
 
 2.  How many course don't have a description listed?
 
-3.  How many professors teach linguistics?
+3.  Which N/A course has the most instructors?
