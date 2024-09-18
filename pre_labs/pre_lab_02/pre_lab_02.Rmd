@@ -311,7 +311,7 @@ Mutate is even more useful when combined with some additional functions. Let's k
 
 **Task** Run the following code and look at the output. Then write a sentence or two describing what you think the mutate statement is doing step by step.
 
-**Answer**
+**Answer: I think it is going through each row in the address column and checking to see what stay it is then outputting the state's abbreviation.**
 
 ```{r}
 maryland_expenses_with_state <- maryland_expenses |>
@@ -356,8 +356,8 @@ Now that you have seen how to use mutate, filtering and dates, give me three que
 
 **Answer**
 
-1.  
+1.  Which expense purpose is listed the most?
 
-2.  
+2.  What was the least used payment method?
 
-3.  
+3.  Which states has the most payees?
