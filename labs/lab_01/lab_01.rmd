@@ -61,7 +61,7 @@ umd_courses |>
 
 ```{r}
 umd_courses |>
-  group_by(title) |>
+  group_by(id) |>
   summarise(
     count_classes = n()
   ) |>
@@ -69,7 +69,7 @@ umd_courses |>
 
 ```
 
-**A2: 1303**
+**A2:AASP100**
 
 ------------------------------------------------------------------------
 
