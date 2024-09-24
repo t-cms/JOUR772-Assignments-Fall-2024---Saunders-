@@ -122,4 +122,4 @@ umd_courses |>
 
 ```
 
-**A5**
+**A5: Find the classes with journalism in them?**
