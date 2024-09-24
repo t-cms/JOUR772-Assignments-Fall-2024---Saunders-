@@ -115,6 +115,10 @@ I don't know why it has a row listed as out of stat because my code doesn't have
 ### **Q5** Choose your own adventure: using either the UMD courses or campaign expenses data, ask and answer a question that is different than the previous ones. You can use one of the ones you provided in the pre_lab.
 
 ```{r}
+#Find the classes with journalism in them
+umd_courses |>
+  select(id, title) |>
+ filter(str_detect(title, "journalism"))
 
 ```
 
