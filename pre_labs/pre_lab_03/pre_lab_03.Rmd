@@ -287,16 +287,16 @@ cleaned_md_grants_loans
 **Task** Write and run code to answer our original question: which zip code has gotten the most amount of money from the Maryland Tourism Board? Does that zip code make sense to you?
 
 ```{r}
-cleaned_md_grants_loans |>
-  group_by(zip_code, source,grantee) |>
-  summarize(total_amount = sum(amount, na.rm = TRUE)) |>
-  arrange(desc(total_amount)) 
-  
-#couldn't figure out function to pull Maryland Tourism Board to show which zip code has gotten the most, but I was able to arrange the total amounts in descending order for the dataset. 
-  
+cleaned_md_grants_loans |> 
+  filter(source == "COMMERCE/MARYLAND TOURISM BOARD") |>
+group_by(zip5) |>
+summarise(total_amount = sum(amount)) |>
+  arrange(desc(total_amount))
 
   
 
 
 
 ```
+
+A: 21202
