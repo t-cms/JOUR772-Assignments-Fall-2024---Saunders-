@@ -77,8 +77,7 @@ HORD COMPLAN MACHT INC, HORD COMPLAN MARCHT/FREELON
 ```{r}
 capital_project_umd <- payments |> 
   filter(str_detect(`Agency Name`,"CAPITAL PROJECTS- UNIVERSITY OF MARYLAND")) |>
-    clean_names() |>
-  distinct()
+  group_by(`Agency Name`) |> summarize(n())
 
 ```
 
