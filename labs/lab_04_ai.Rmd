@@ -11,7 +11,7 @@ Let's load the necessary libraries and, using your API key, setup your credentia
 
 ```{r}
 library(axolotr)
-create_credentials(GROQ_API_KEY = "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")
+create_credentials(GROQ_API_KEY = 
 ```
 
 See that "Please restart your R session for changes to take effect."? Go ahead and do that; you'll need to rerun the `library()` function for axolotr, and let's load tidyverse while we're at it.\
