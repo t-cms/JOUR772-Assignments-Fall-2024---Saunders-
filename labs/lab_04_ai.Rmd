@@ -112,40 +112,56 @@ debug_response
 
 ```
 
-**Answer:**
+**Answer:** Yes the answer is correct. It follows the code line by line.
 
 ------------------------------------------------------------------------
 
 ## Q3. Helping with code debugging: paste the code block of an answer you had for a previous lab down here and ask Grok if that code is correct, based on the question in the lab. What do you think about its response?
 
 ```{r}
-#referring to question four on lab 2 
-#Loading lab question
-lab_question = 'Using case_when(), create a column in the Maryland expenses data called spending_location indicating whether each record indicated money spent in Maryland or outside Maryland, based on the address column of the \'maryland_expenses\' dataset. For records that are in Maryland, make the new column\'s value \"In-state\" and for the others, make it \"Out of state\". Then write code that shows the total amount of money spent in each category and describe the results. You can do this in one statement or break it up into two statements (saving the new column to your dataframe).'
+#referring to question four on lab 2
+#Loading lab question 
+lab_question = 'Using case_when(), create a column in the Maryland expenses data called spending_location indicating whether each record indicated money spent in Maryland or outside Maryland, based on the address column of the maryland_expenses dataset. For records that are in Maryland, make the new column'
+#Paste the code block here, between the quotes. If your code has quotes or single quotes, you have to add a / before each one so R doesn't break.
 
+your_r_code_lab = "maryland_expenses |>
+  mutate(
+    spending_location = case_when(
+        str_detect(address, \" Maryland \") ~ \"In State\",
+        str_detect(address, \" California \") ~ \"Out of State\",
+        str_detect(address, \" Washington \") ~ \"Out of State\",
+        str_detect(address, \" Louisiana \") ~ \"Out of State\",
+        str_detect(address, \" Florida \") ~ \"Out of State\",
+        str_detect(address, \" North Carolina \") ~ \"Out of State\",
+        str_detect(address, \" Massachusetts \") ~ \"Out of State\",
+        str_detect(address, \" West Virginia \") ~ \"Out of State\",
+        str_detect(address, \" Virginia \") ~ \"Out of State\",
+        .default = NA
+      )
+  )
+spending_location |> 
+  group_by(spending_location) |>
+  summarise(total_amount = sum(amount)) |>
+  arrange(desc(total_amount))"
 
-#Paste the code block here, between the quotes. If your code has quotes or single quotes, you have to add a \ before each one so R doesn't break.
-
-your_r_code_lab = "
-
-{r}
-your_r_code_lab <- axolotr::ask(
-  prompt = paste("Given the following text, extract relevant information into a CSV with a structure that makes sense to recognize all entities and their features. Each entity should be a row, and their features should be columns. Give me just the CSV, with no yapping and no title", text),
-  model = "llama-3.1-8b-instant",
-)
-
-your_r_code_lab
 
 
 
 ```
 
 ```{r}
-#Add code below to talk to Groq and display its response
+# add code below to ask grok if the code is correct. 
 
+
+lab_response <- axolotr::ask(
+  prompt = paste("Can you explain the above code block",your_r_code_lab, lab_question),
+  model = "llama-3.1-8b-instant"
+)
+
+lab_response
 ```
 
-**Answer:**
+**Answer: I think its response is pretty accurate and it explains each line of data accurately and clearly. I am pretty happy with this response.**
 
 ------------------------------------------------------------------------
 
@@ -157,25 +173,27 @@ data_story <- axolotr::ask(
   model = "llama-3.1-8b-instant"
 )
 data_story
-#Add code below to talk to Groq and display its response
 
+#Add code below to talk to Groq and display its response
 ```
 
-**Answer:**
+**Answer: I liked this response it gave me several examples of data-driven stories such as identifying areas with high concentrations of crashes and try to figure out the underlying causes or examining the dataset to determine the times of day when crashes are most likely to occur.**
 
 ------------------------------------------------------------------------
 
 ## Q5. Using AI to write news articles: ask Groq to write a 500-word news article about a car crash at the intersection between Knox Road and Regents Drive. What issues or problems do you see with the output?
 
 ```{r}
-write_car_crash <- axolotr::ask(
-  prompt = "write a 500-word news article about a car crash at the intersection between Knox Road and Regents Drive",
+news_article <- axolotr::ask(
+  prompt = "Write a 500 word news article about  a car crash at the intersection between Kmox Road and Regents Drive.",
   model = "llama-3.1-8b-instant"
 )
 
-write_car_crash
+news_article
 #Add code below to talk to Groq and display its response
 
 ```
 
 **Answer:**
+
+Although, this response may read like an intense, well-informed piece. It is completely fabricated and that is scary at how it could read so well. It makes up several false quotes and for all we know, made up false people as sources in the story. It ends with an 'update' saying the the intersection where the crash happened is closed while investigators continue to examine the scene. Complete false, which is against journalistic ethics 110 percent.
