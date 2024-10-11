@@ -240,8 +240,26 @@ No code here; I want you to provide three questions that this data suggests to y
 
 **Answer**
 
-1.  How many classes have N/A listed for a professor?
+1.  How many classes have the name Ronald listed for a professor?
 
-2.  How many course don't have a description listed?
+    1.  128 classes have a instructor with the name of Ronald – ask professor how to remove duplicates
 
-3.  Which N/A course has the most instructors?
+```{r}
+
+umd_courses |>
+  filter(str_detect(instructors,"Ronald")) |>
+    distinct() |>
+   summarise (count_Ronalds = n()) 
+  
+ 
+```
+
+1.  How many course don't have a description listed?
+
+    ```{r}
+    umd_courses |>
+      group_by(description, title) |>
+      filter(str_detect(description,"NA"))
+    ```
+
+2.  Which N/A course has the most instructors?
