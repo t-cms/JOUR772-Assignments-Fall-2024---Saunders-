@@ -1,7 +1,7 @@
 ---
 title: "Reverse Engineering Project"
-author: "Student names here"
-date: "Date here"
+author: "Tiasia Saunders"
+date: "17 October 2024"
 output:
   html_document:
     theme: cerulean
@@ -25,7 +25,9 @@ In this notebook, we are reverse engineering the story, [STORY NAME](STORY%20URL
 Loading required libraries for this analysis.
 
 ```{r echo=FALSE, message=FALSE}
-
+library(tidyverse)
+library(lubridate)
+library(janitor)
 ```
 
 ## Load and Cleaning Data
@@ -33,6 +35,9 @@ Loading required libraries for this analysis.
 In this section, describe the source of the data, write a basic data dictionary for data you are working with, and discuss any caveats or issues you discovered working with this data.
 
 ```{r}
+fatal_police_shootings_agencies <- read_csv("data/fatal-police-shootings-agencies.csv") |> clean_names()
+fatal_police_shootings_data <-read_csv("data/fatal-police-shootings-data.csv") |> clean_names() 
+
 # Load required data
 
 # Path to data should be loaded from folder "data" i.e. read_csv("data/name_of_data.csv")
@@ -48,13 +53,15 @@ In this notebook, we are reverse engineering five sentences from the story.
 
 ### Sentence 1
 
--   **Sentence text**: [Paste in sentence to engineer here]
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Sentence text**: Of the 247 women fatally shot, 48 were Black and seven of those were unarmed.
+-   **Analysis summary**: We were able to get the data used in the Washington Post's article; however, it seems it has been updated since the article was published in 2020. So, we found that there have been a total of 452 women shot by police (the data was updated two days ago). Additionally, we found that there have been 85 Black females show by the police.
 
 ```{r}
-# Put code to reverse engineer sentence here
+fatal_police_shootings_data |> 
+  group_by(gender, race) |> 
+summarize(count_gender = n())
 
-# Display results of code below this codeblock
+#how to override the group_by function to groups, so our output can show on the first table? 
 
 ```
 
