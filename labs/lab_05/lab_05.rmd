@@ -49,7 +49,8 @@ The issue is that two columns the date format (time) , and the case number colum
 Baltimore_county_police_logs <- read_csv ("tabula-Baltimore County; Carey, Samantha log OD.csv", col_names=FALSE) |>
   clean_names() |>
   rename(date= x1, time=x2, case_number= x3, event_type= x4, location= x5) |>
-  mutate(date=mdy(date))
+mutate(date=mdy(date))
+  
 
 ```
 
@@ -80,6 +81,8 @@ Baltimore_county_police_logs |>
     count_calls = n() 
   ) |>
 mutate(percentage = (count_calls /sum(count_calls))* 100)
+
+#(could have done this instead) mutate(pct_total=count/4112*100)
                         
   
 
