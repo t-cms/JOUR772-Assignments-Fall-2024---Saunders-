@@ -57,7 +57,7 @@ maryland_zcta <- maryland_zcta |> mutate(ZCTA5N = as.character(ZCTA5N))
 
 balitmore_911 <- baltimore_911 |> mutate(zip_code = as.character(zip_code))
 
-balitmore_calls_demographics <- maryland_zcta |> 
+baltimore_calls_demographics <- maryland_zcta |> 
   left_join(balitmore_911, join_by(ZCTA5N==zip_code
                                    ))
 
@@ -109,16 +109,52 @@ Add a column to your code that calculates the number of calls per 1,000 people f
 
 Which zip code has the highest rate of calls per 1,000 people? Find the neighborhoods in that zip code that are listed in the data - you can use group_by or distinct to do this. What are some of those neighborhoods?
 
-A3.
+A3. Zip code 21217 has the most calls at 774
 
 ```{r}
 balitmore_calls_demographics |>
-  mutate(under_18 = (PCT_UNDER_18/ )*75 
+  filter(PCT_UNDER_18 >= 75) |>
+  group_by(ZCTA5N) |>                       
+  summarise(population = POPULATION[1],   
+            total_calls = n()) |>           
+  arrange(desc(total_calls)) |>           
+  select(ZCTA5N, population, total_calls)
+
+balitmore_calls_demographics <- balitmore_calls_demographics |>
+  group_by(ZCTA5N) |>
+  mutate(
+    total_calls = n(),
+    calls_per_1000 = (total_calls / sum(POPULATION)) * 1000
+  )
+
+highest_rate_calls <- baltimore_calls_demographics |>
+  group_by(ZCTA5N, neighborhood) |>
+  summarise(
+    total_calls = n(),
+    population = sum(POPULATION),
+    calls_per_1000 = (total_calls / population) * 1000
+  ) |>
+  arrange(desc(calls_per_1000))
+  
 ```
 
 ### Q4. Choose your own adventure: I want you to come up with a question you could ask of the Baltimore City data that combines both the calls and the demographic information. You must use both demographics and the overdose call data in your work.
 
+Which zip code does the overdose calls happen the most in Baltimore?
+
+Which zip code has the most percentage under 18?
+
 A4:
 
 ```{r}
+
+baltimore_calls_demographics <- baltimore_calls_demographics |> mutate(ZCTA5N = as.character(ZCTA5N)) baltimore_911 <- baltimore_911 |> mutate(zip_code = as.character(zip_code)) 
+
+combined_baltimore_911_with_demographics_data <- baltimore_911 |> left_join (baltimore_calls_demographics, join_by( ZCTA5N == zip_code)) 
+
+#so I tried to change the data types of the datasets zip code and ZCTA5N columns, then tried to combine the demographic data with the baltimore 911 data, at first it worked then when I came back to reload it it didnt 
+
+ 
+#change data types to same thing first 
+                                                                     #maryland_population_with_voters_and_demographics <- maryland_population_with_voters |> left_join(maryland_demographics, join_by(COUNTY == NAME))
 ```
