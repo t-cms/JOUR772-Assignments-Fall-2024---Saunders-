@@ -35,8 +35,8 @@ library(janitor)
 In this section, describe the source of the data, write a basic data dictionary for data you are working with, and discuss any caveats or issues you discovered working with this data.
 
 ```{r}
-fatal_police_shootings_agencies <- read_csv("data/fatal-police-shootings-agencies.csv") |> clean_names()
-fatal_police_shootings_data <-read_csv("data/fatal-police-shootings-data.csv") |> clean_names() 
+fatal_police_shootings_agencies <- read_csv("data/fatal-police-shootings-agencies.csv") 
+fatal_police_shootings_data <-read_csv("data/fatal-police-shootings-data.csv") 
 
 # Load required data
 
@@ -67,13 +67,20 @@ summarize(count_gender = n())
 
 ### Sentence 2
 
--   **Sentence text**: [Paste in sentence to engineer here]
+-   **Sentence text**: The average age of women and men killed by police was 37, and about one-third were 25 to 34.
 -   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
 
-```{r}
+```{#just practicing}
+{r}
+
+
+
+
 # Put code to reverse engineer sentence here
 
 # Display results of code below this codeblock
+
+
 
 ```
 
@@ -83,6 +90,14 @@ summarize(count_gender = n())
 -   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
 
 ```{r}
+fatal_police_shootings_data |>
+  filter(str_detect(armed,"unarmed")_ |>
+  group_by(armed, age, gender, race) |> 
+  summarise(
+    
+    total = n{} |>
+  ))
+arrange(desc(total))
 # Put code to reverse engineer sentence here
 
 # Display results of code below this codeblock

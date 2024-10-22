@@ -361,3 +361,22 @@ Now that you have seen how to use mutate, filtering and dates, give me three que
 2.  What was the least used payment method?
 
 3.  Which states has the most payees?
+
+1.  How many departments are there?
+
+    ```{r}
+    umd_courses |> 
+      group_by(department) |> 
+      summarise( count_dept = n())
+    ```
+
+2.  How many course have seats \> 100
+
+```{r}
+umd_courses |>
+  group_by(title, seats) |>
+  filter(seats >100) |>
+  arrange(desc(seats))
+
+ 
+```
