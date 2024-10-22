@@ -91,12 +91,12 @@ summarize(count_gender = n())
 
 ```{r}
 fatal_police_shootings_data |>
-  filter(str_detect(armed,"unarmed")_ |>
-  group_by(armed, age, gender, race) |> 
-  summarise(
+  filter(str_detect(unarmed)) |>
+  group_by(armed, gender, race) |> 
+  summarize(
     
-    total = n{} |>
-  ))
+    total = n()) |>
+
 arrange(desc(total))
 # Put code to reverse engineer sentence here
 
