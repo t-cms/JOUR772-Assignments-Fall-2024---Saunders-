@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 options(scipen=999)
 library(tidyverse)
 # if needed, install tidycensus, then load it.
-# install.packages("tidycensus")
+install.packages("tidycensus")
 library(tidycensus)
 ```
 
@@ -33,7 +33,7 @@ To use the API, you need to [an API key from the Census Bureau](https://api.cens
 **Task** Replace YOUR KEY HERE in the codeblock below with your Census API Key (leave the quotemarks).
 
 ```{r echo=FALSE}
-census_api_key("PASTEAPIKEYHERE", install=TRUE)
+census_api_key("2847959a22ba8e3abed3572b34a450086e5052ca", install=TRUE)
 #an error occured when I requested the key
 ```
 
@@ -185,3 +185,7 @@ md12 |>
 Question: based on the table above, which counties win most income between the periods ending in 2012 and 2022?
 
 **Add your answer here:**
+
+```{r}
+
+```

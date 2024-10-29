@@ -67,11 +67,22 @@ summarize(count_gender = n())
 
 ### Sentence 2
 
--   **Sentence text**: The average age of women and men killed by police was 37, and about one-third were 25 to 34.
--   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
+-   **Sentence text**: About 31 percent, or 77, of the 247 women fatally shot by police since 2015 had mental health issues, compared to 22 percent of the 5,362 men killed.
+-   **Analysis summary**: Since the data we are working with has been updated, we were able to find tht there is a total of 313 woman shot by police and 7,839 men shot by police. There have been 139 women shot with mental illnesses and 1,859 men shot with mental illnesses. The percentage for women would be 44% and for men 23%.
 
-```{#just practicing}
-{r}
+```{r}
+fatal_police_shootings_data |>
+  group_by(was_mental_illness_related, gender) |>
+  summarise(total = n()) 
+  
+  total_shootings <- fatal_police_shootings_data |>
+  group_by(gender) |>
+  summarise(total = n())
+
+total_shootings_mi <-fatal_police_shootings_data |>
+  filter(was_mental_illness_related == "True") |>
+  group_by(gender)
+  summarise(total_mi = n())
 
 
 
@@ -86,7 +97,8 @@ summarize(count_gender = n())
 
 ### Sentence 3
 
--   **Sentence text**: [Paste in sentence to engineer here]
+-   **Sentence text**: Since 2015, police have killed 26 unarmed women, including Taylor. Of those, 14 were White, seven were Black, four were Hispanic and one’s race was unknown. 
+
 -   **Analysis summary**: [Write up two to three sentences describing the results of your analysis. Were you able to confirm the finding? If not, why not?]
 
 ```{r}
