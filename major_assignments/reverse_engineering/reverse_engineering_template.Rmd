@@ -324,4 +324,46 @@ print(average_age)
 
 ```
 
--30-
+Short Memo:
+
+To-do: Critical analysis memo: a short memo (750 words) that critically analyzes the story and answers the following questions:
+
+-   What are the main findings of the story?- Tiasia 
+
+    -   The story primarily highlights the number of women shot by police officers since 2015, especially in light of Breonna Taylor’s death. It provides a detailed breakdown of how many women were shot, whether they were armed or unarmed, and if they had mental health conditions. The report also examines how many were shot at home and whether they were served warrants similar to Breonna Taylor. Additionally, the story touches on the tragic deaths of Black men, such as George Floyd and Michael Brown, who also lost their lives due to police encounters. Overall, the story focused on the racial demographic of women/men who have been shot by the police since 2015. 
+
+-   What did the reporter(s) do to bring the story to life beyond the data findings? Did they use the data to find and tell a compelling story? Was their approach effective? Why?	-	Ijeoma
+
+One way that the reporters brought this story to life was through humanization. Beyond the data that was gathered, human sources were interviewed, faces were [matched] to the numbers and real-life experiences were documented. Rather than just throwing figures at readers, people whose relatives had been fatally shot by the police were interviewed and this gave the story a more personal feel.
+
+Another thing that brought life to the story was the use of visualization. First, graphics were used, not only to enhance the story’s presentation but also to represent the figures in the data. Even without reading the story in details, a quick skim through the story gives a reader a sense of what the story is talking about.
+
+It also helped that the reporters did some comparison of data insights to drive certain points home and emphasize nuances. For instance, they showed that 20 percent of women fatally shot by the police were black, but highlighted the disproportionate impact of this fraction, by also pointing out that black women only made up 13 percent of the entire female population being reviewed.
+
+The reporters did tell a compelling story through their analysis and representation of the data. This approach is effective because the combination of figures with human angles and emotional depth created a relatable narrative.
+
+\
+
+-   How did the reporter(s) communicate their specific data findings in the story? How could it have been improved?
+
+The reporters communicated their specific findings in the story. Statistics presented showed specifically how many women were fatally shot, and this was further broken down into other details such as race, location of the shootings and the mental state of the women involved.
+
+Perhaps more information could have been given on the disciplinary actions against police officers involved, but overall, the data findings in the story were effectively communicated.
+
+\
+
+-   How did the reporter(s) communicate any flaws or shortcomings in the data or analysis method that could affect their findings? Did they make it easy for readers to see their work? - Alaysia
+
+I wouldn’t say that the reporters made it easy for readers to see their work. The work was linked at the bottom, but to an average reader you would have to have a decent understanding of github to understand what all of their findings are and how to read the dataset. They did do a good job explaining the data in the article, though. One shortcoming that the reporters mentioned was that the fatal police shooting data may be missing some accounts because the FBI isn’t tracking every departments’ fatal shootings reports because many local police stations aren’t required to report these incidents to the federal government. They also mentioned that there may be a delay in the updates to the database because of the time it takes to report on the case and verify the data. In the main police shootings dataset, the reporters mentioned that there may be multiple values for the race/ethnicity of the victim to accommodate multiple racial and ethnic identifications. For the dataset that includes departments and agencies involved in fatal police shootings, they noted that there may be multiple ORI codes, federal identifiers, for a single department.
+
+[data-police-shootings/v2/README.md at master · washingtonpost/data-police-shootings · GitHub](https://github.com/washingtonpost/data-police-shootings/blob/master/v2/README.md)
+
+[How The Washington Post examines fatal police shootings - The Washington Post](https://www.washingtonpost.com/investigations/2022/12/05/washington-post-fatal-police-shootings-methodology/)
+
+\
+
+-   Where did the data set(s) come from? Did they have to build the data set themselves? Did they have to do extensive work to clean and prepare the data before analysis? - Alaysia
+
+The Washington Post built the dataset themselves and they record the data manually. In their methodology, when the Post created the second version of the dataset they deleted, added and renamed some columns to portray the data more accurately and to define the categories of the data better. They did create a second dataset that includes departments and agencies involved in a fatal police shooting. It’s assumed that this was entered manually also, though The Post didn’t specify that.  From the article, the shooting data included in the dataset came from the Washington Post’s police shootings database. The population data are five year estimates from the 2018 ACS. 
+
+[How The Washington Post examines fatal police shootings - The Washington Post](https://www.washingtonpost.com/investigations/2022/12/05/washington-post-fatal-police-shootings-methodology/)
