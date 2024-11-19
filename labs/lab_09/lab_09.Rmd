@@ -1,6 +1,7 @@
 ---
 title: "lab_09.Rmd"
 author: "derek willis"
+student: Tiasia Saunders 
 date: "2023-04-12"
 output: html_document
 editor_options: 
@@ -23,6 +24,16 @@ knitr::opts_chunk$set(echo = TRUE)
 for this lab.
 
 ```{r}
+options(scipen=999)
+library(tidyverse)
+library(janitor)
+library(lubridate)
+
+install.packages("ggrepel")
+library(ggrepel)
+library(tidycensus)
+install.packages('ggthemes')
+library(ggthemes)
 # load libraries here
 ```
 
@@ -51,6 +62,9 @@ add the URL of your chart.
 **A1.**
 
 ```{r}
+md_county_gov_data<-read_csv("data/md_gov_county.csv") |> clean_names()
+md_county_gov18_data <- read_csv("data/md_gov_county_18.csv") |> clean_names()
+
 # Prepare data for export
 
 # Export CSV
