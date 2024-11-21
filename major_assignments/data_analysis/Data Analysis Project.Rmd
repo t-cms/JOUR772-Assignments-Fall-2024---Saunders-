@@ -9,9 +9,23 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Data Analysis Project 
+## Data Analysis Project
 
 ```{r}
-load data 
-install packages 
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(lubridate)
+#install packages 
+```
+
+```{r}
+
+md_pres_vice_data <- read_csv("data/md_pres_vicepres_data.csv") |> clean_names ()
+pres_election_by_md_counties <-read_csv("data/pres_election_by_md_counties.csv") |> clean_names()
+senate_by_county <- read_csv("data/senate_by_county.csv") |> clean_names ()
+senate_overall <-read_csv("data/senate_overall_data.csv") |> clean_names()
+
+
+
 ```
