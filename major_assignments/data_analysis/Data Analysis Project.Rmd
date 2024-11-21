@@ -19,12 +19,62 @@ library(lubridate)
 #install packages 
 ```
 
+\
+
+MD Pres/ Vice Data: 
+
+|                    |                                                          |                                   |                                             |                                               |                                                     |                                   |                                                        |
+|--------------------|----------------------------------------------------------|-----------------------------------|---------------------------------------------|-----------------------------------------------|-----------------------------------------------------|-----------------------------------|--------------------------------------------------------|
+| name               | party                                                    | early_voting                      | election_day                                | mail_in_ballot                                | provisional                                         | total                             | percentage                                             |
+| Name of candidate  | Democratic/ Republican? libertarian/ Green/ Unaffiliated | Number of people who voted early  | Number of people who voted on election day  | Number of people who mailed in their ballots  | Number of people who filled out provisional ballots | Total Number of people who voted  | The percentage of people who voted for each candidate  |
+
+Presidential Election by MD Counties: 
+
+|                            |                                                            |                                                           |                                                               |                                                                         |                                                                      |
+|----------------------------|------------------------------------------------------------|-----------------------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------|
+| Jurisdiction               | Kamala_d_harris_and_tim_walz_democratic                    | donald_j_trump_and_jd_vance_republican                    | Chase_oliver_and_mile_ter_maat_libertatiran                   | jill_ellen_stein_and_rudolph_ware_green                                 | Robert_f_kennendy_jr_and_nicole_shanahan_unaffiliated                |
+| The names of the counties  | Number of people who voted for Kamala Harris and Tim Walz  | Number of people who voted for Donald Trump and JD Vance  | Number of people who voted for Chase Oliver and Mike Ter-maat | Number of people who voted for Jill Ellen Stein and Rudolph Ware Green  | Number of people who voted for Robert F Kennedy and Nicole Shanahan  |
+
+Senate Overall:
+
+|                       |                                                   |                                             |                                            |
+|-----------------------|---------------------------------------------------|---------------------------------------------|--------------------------------------------|
+| Jurisdiction          | angela_alsobrooks_democratic                      | larry_hogan_republican                      | Mike_scott_libertarian                     |
+| Name of the counties  | Number of people who voted for Angela Alsobrooks  | Number of people who voted for Larry Hogan  | Number of people who voted for Mike Scott  |
+
+Senate By County:
+
++---------------------+----------------------------------------------------------------------+-----------------------------------+---------------------------------------------+-----------------------------------------------+------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| name                | party                                                                | early_voting                      | election_day                                | mail_in_ballot                                | provisional                                          | total                             | Percentage                                         |
++---------------------+----------------------------------------------------------------------+-----------------------------------+---------------------------------------------+-----------------------------------------------+------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+| Name of Candidates  | Name of Party                                                        | Number of people who voted early  | Number of people who voted on election day  | Number of people who mailed in their ballots  | Number of people who filled out provisional ballots  | Total number of people who voted  | Percentage of people who voted for each candidate  |
+|                     |                                                                      |                                   |                                             |                                               |                                                      |                                   |                                                    |
+|                     | Democratic/ Republican/ Libertarian/ Other Candidates/ Unaffiliated  |                                   |                                             |                                               |                                                      |                                   |                                                    |
++---------------------+----------------------------------------------------------------------+-----------------------------------+---------------------------------------------+-----------------------------------------------+------------------------------------------------------+-----------------------------------+----------------------------------------------------+
+
+Active Voters: 
+
+|                      |                                                     |                                                     |                                                      |                                                |                                                       |                                                                           |                                                |                                      |
+|----------------------|-----------------------------------------------------|-----------------------------------------------------|------------------------------------------------------|------------------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------------|------------------------------------------------|--------------------------------------|
+| County               | DEM                                                 | REP                                                 | LIB                                                  | OTH                                            | UNA                                                   | NLM                                                                       | GRN                                            | TOTAL                                |
+| Names of the county  | Number of people who voted for Democrats by county  | Number of people who voted for Republican by county | Number of people who voted for Libertarian by county | Number of people who voted for Other by county | Number of people who voted for Unaffiliated by county | Number of people who voted for the National Liberation Movement by county | Number of people who voted for Green by county | Total of people who voted by county  |
+
+\
+
+Limits of the data: None of the data sets have demographic data such as the race of the voter or the age so, we had to change out questions to consider that when trying to figure out what to ask. Additionally, for question 3 we have considered selecting just one other state to compare MD to rather than looking at all the flip states due to time.
+
+\
+
+\
+
 ```{r}
 
 md_pres_vice_data <- read_csv("data/md_pres_vicepres_data.csv") |> clean_names ()
 pres_election_by_md_counties <-read_csv("data/pres_election_by_md_counties.csv") |> clean_names()
 senate_by_county <- read_csv("data/senate_by_county.csv") |> clean_names ()
-senate_overall <-read_csv("data/senate_overall_data.csv") |> clean_names()
+senate_overall <-read_csv("data/senate_overall.csv") |> clean_names()
+active_voters_data <-read_csv("data/active_voters_data.csv")
+
 
 
 
