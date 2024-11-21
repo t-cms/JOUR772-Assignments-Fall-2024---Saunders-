@@ -1,0 +1,17 @@
+---
+title: "Data-Analysis-project"
+author: "Tiasia Saunders"
+date: "2024-11-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Analysis Project 
+
+```{r}
+load data 
+install packages 
+```

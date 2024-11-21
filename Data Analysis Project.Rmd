@@ -1,0 +1,30 @@
+---
+title: "Data-Analysis-project"
+author: "Tiasia Saunders"
+date: "2024-11-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Analysis Project: 
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(lubridate)
+
+```
+
+```{r}
+
+#load data 
+
+maryland_pres_vicepres_voting_data <- read_csv("~/Desktop/JOUR772-Assignments-Fall-2024---Saunders-/major_assignments/data_analysis/data/md_pres_vicepres_data.csv") |> clean_names() 
+
+pres_elec_by_md_counties <-read_csv("~/Desktop/JOUR772-Assignments-Fall-2024---Saunders-/major_assignments/data_analysis/data/pres_election_by_md_counties.csv") |> clean_names()
+
+
+```
