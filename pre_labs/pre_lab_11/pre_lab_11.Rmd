@@ -40,7 +40,7 @@ Let's read in this data and examine it:
 
 ### Task 2: Read in data
 
-**Task** Run the following code and describe the dataframe it outputs. **Answer**
+**Task** Run the following code and describe the dataframe it outputs. **Answer:**
 
 ```{r}
 releases <- read_rds("data/cardin_releases.rds")
@@ -146,13 +146,8 @@ stop_words <- stop_words |>
   add_row(word = "maryland") |>
   add_row(word = 'federal') |> 
   add_row(word = 'u.s') |> 
-  add_row(word = 'md') |> 
-  add_row(word = 'senate') |> 
-  add_row(word = "hollen") |> 
-  add_row(word = "van") |> 
-  add_row(word = "chris") |> 
-  add_row(word = "project") |> 
-  add_row(word = "program") 
+  add_row(word = 'file')  
+ 
 
 ```
 
