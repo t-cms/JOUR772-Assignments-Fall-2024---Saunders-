@@ -79,3 +79,11 @@ active_voters_data <-read_csv("data/active_voters_data.csv")
 
 
 ```
+
+Voter registeration/ voter turnout
+
+```{r}
+
+
+
+```

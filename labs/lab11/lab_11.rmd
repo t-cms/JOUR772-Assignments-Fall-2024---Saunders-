@@ -40,39 +40,81 @@ md_attorney_sanctions <- read_csv("data/md_attorney_sanctions.csv")
 ```
 
 ```{r}
+unique_words <- md_attorney_sanctions |> 
+ select(text) |>
+  unnest_tokens(word, text)
+View(unique_words)
 #Create list of unique words
+
 
 ```
 
 ```{r}
+data("stop_words")
+
+stop_words <- stop_words |> 
+  add_row(word = "arizona") |> 
+  add_row(word = "client") |> 
+  add_row(word = "funds") |>
+  add_row(word = "united") |>
+  add_row(word = "states") |>
+  add_row(word = "colorado") |> 
+  add_row(word = "records") |> 
+  add_row(word = "august") |> 
+  add_row(word = "year") |> 
+  add_row(word = "april")  
+ 
 #Load stop words
 
 ```
 
 ```{r}
+unique_words |>
+  anti_join(stop_words) |>
+  group_by(word) |>
+  tally(sort=TRUE) |>
+  mutate(percent = (n/sum(n))*100) 
 #Remove stop words from unique words list
+
 
 ```
 
-**A1.**
+**A1: The leading word is failing which isn't surprising given that this is a dataset regarding attorney sanctions. I think the top ten words describe the definition of what a sanction is and has to do with the misdoings or wrongdoings that these attorneys are getting sanctioned for.**
 
 ------------------------------------------------------------------------
 
 ##### **Q2.** Let's move beyond single words to phrases. Make a list of the top 10 three-word phrases, called trigrams, based on the example from the pre_lab (you'll need to modify the example code to do this). What's the top trigram and how often does it appear? What does that phrase mean in legal terms?
 
 ```{r}
+top_ten_phrases <- md_attorney_sanctions |>
+  unnest_tokens(trigam, text, token = "ngrams", n = 3) |>
+  separate(trigam, c("word1", "word2","word3"), sep = " ") |>
+  filter(!word1 %in% stop_words$word) |>
+  filter(!word2 %in% stop_words$word) |>
+  mutate(trigram = paste(word1, word2, word3, sep=" ")) |>
+  group_by(trigram) |>
+  tally(sort=TRUE) |>
+  mutate(percent = (n/sum(n))*100) |>
+  top_n(10)
+
 # Check the task 12 on Pre-lab 11 to see if you can use that code
 
 ```
 
-**A2.**
+**A2: The top trigram is attorney trust account and it appears 343 times in the dataset. It is is a bank account that lawyers use to hold client funds separate from the law firm's operating funds**
 
 ------------------------------------------------------------------------
 
 ##### **Q3.** Let's drop back down to more traditional text analysis - take the top trigram from Q2 and write code to see how many times it occurs in the text column in each fiscal year. What do you think the answer produced by your code suggests? What else could you do to try and clarify the most important reasons attorneys get sanctioned?
 
 ```{r}
+trigram <- "attorney trust account"
+sanctions_with_phrases <-md_attorney_sanctions |> 
+  mutate(trigram_occurrences = str_count(text, fixed(trigram))) |>
+  group_by(fiscal_year) |>
+  summarise(total_occurrences = sum(trigram_occurrences, na.rm = TRUE))
+
 
 ```
 
-**A3.**
+**A3: It suggests that there is an increase in attorney trust accounts as the years go on with 2022 having the most at 89. This trend suggests that discussions or issues related to "attorney account trust" have become increasingly prominent over time, particularly starting from 2017, which marks a sharp rise compared to prior years. The results suggests that 2022 had the highest amount of lawyers being sanctioned for misuse of client funds or attorney trust accounts. Another way to try and clarify the main reasons attorneys are sanctioned would be a graph or visualization that shows the top 10 trigrams for each fiscal year.**
