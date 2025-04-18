@@ -121,3 +121,24 @@ umd_courses |>
 A: Doctoral Dissertation Research, 1176
 
 So, I attempted to find the NA course with the most instructors. First, I grouped my table with instructors and title for courses. Then I created the column count_instructors. Lastly, I arranged that column in descending order, so I could know which N/A course had the most instructors.
+
+How many class titles have masters in it?
+
+1444 classes have the word master's in it.
+
+```{r}
+master_courses <-umd_courses |> 
+  filter(str_detect(`title`, "Master's")) |>
+  summarise(count_titles = n())|>
+print(master_courses)
+```
+
+How many courses have seats over 100?
+
+```{r}
+seats_over_100 <-umd_courses |> 
+  filter(seats >100) |> 
+  summarise(count_seats = n())|>
+  print(seats_over_100)
+
+```
